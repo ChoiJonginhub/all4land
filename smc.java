@@ -31,6 +31,7 @@ class Manager2{
 		println("학생 수만큼 이름,국어,영어,수학 점수를 입력하시오.");
 		for(int i=0; i<n; i++) {
 			String temp[] = sc.next().split(",");
+			st[i]=new Student();
 			st[i].setInfo(temp);
 		}
 	}
