@@ -1,13 +1,16 @@
 package memory;
 
 public abstract class Memory {
-	int[] data;
+	int[] data = new int[5];
 	int count;
-	Memory() {
-		data= new int[5];
-		count=0;
+	public void push(int n) {
+		if(count>4) {
+			System.out.println("Overflow!");
+			count=4;
+		}else {
+			data[count++]=n;			
+		}
 	}
-	abstract void push(int n);
 	abstract void pop();
 	abstract void show();
 }
