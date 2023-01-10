@@ -1,14 +1,16 @@
 package memory;
 
 public class MyQueue extends Memory{
-	public void push(int n) {
-		data[count++]=n;
-	}
 	public void pop() {
-		for(int i=0; i<count; i++) {
-			data[i]=data[i+1];
+		if(count-1<0) {
+			System.out.println("Underflow!");
+		}else {
+			for(int i=0; i<count; i++) {
+				data[i]=data[i+1];
+			}
+			data[count]=0;
+			count--;			
 		}
-		count-=1;
 	}
 	public void show() {
 		for(int i=0; i<5; i++) {
