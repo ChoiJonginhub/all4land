@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>계산기</title>
+        <script lang="javascript">
+            function reset(){
+                var box = document.getElementById("box");
+                box.value="0";
+            }
+            function inputNum(event){
+                var box = document.getElementById("box");
+                if(box.value=='0') box.value=event.target.value;
+                else box.value=box.value+event.target.value;
+            }
+            function cal(){
+                var box = document.getElementById("box");
+                var temp = box.value.split("^");
+                if(temp.length==1){
+                    var ans = eval(box.value);
+                    box.value=ans;
+                }else {
+                    var t1 = eval(temp[0]);
+                    var t2 = eval(temp[1]);
+                    var ans = 1;
+                    for(var i=0; i<t2; i++){
+                        ans = ans * t1;
+                    }
+                    box.value=ans;
+                }
+            }
+            function tri(event){
+                var box = document.getElementById("box");
+                var t = event.target.value;
+                var ans;
+                if(t=="sin"){
+                    ans = Math.sin(eval(box.value));
+                } else if(t=="cos"){
+                    ans = Math.cos(eval(box.value));
+                } else if(t=="tan"){
+                    ans = Math.tan(eval(box.value));
+                }
+                box.value=ans;
+            }
+            function inputxy(){
+                var box = document.getElementById("box");
+                box.value=box.value+"^";
+            }
+            function change(){
+                var box = document.getElementById("box");
+                var ans = eval(box.value);
+                if(eval(box.value<0)) {
+                    ans = Math.abs(ans);
+                    box.value=ans;
+                }else {
+                    box.value = "-"+ans;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="box" style="text-align: right;" size="24" value="0"><br>
+        &nbsp;
+        <input type="button" value="Clear" style="color: blue; width: 85px;" onclick="reset()">
+        <input type="button" value="=" style="color: blue; width: 85px;" onclick="cal()">
+        <br>
+        <input type="button" value="1" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        <input type="button" value="2" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        <input type="button" value="3" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="+" style="color: green; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="x^y" style="color: red; width: 35px;" onclick="inputxy()">
+        <br>
+        <input type="button" value="4" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        <input type="button" value="5" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        <input type="button" value="6" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="-" style="color: green; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="sin" style="color: red; width: 35px;" onclick="tri(event)">
+        <br>
+        <input type="button" value="7" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        <input type="button" value="8" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        <input type="button" value="9" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="*" style="color: green; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="cos" style="color: red; width: 35px;" onclick="tri(event)">
+        <br>
+        <input type="button" value="0" style="color: blue; width: 30px;" onclick="inputNum(event)">
+        <input type="button" value="+/-" style="color: blue; width: 30px;" onclick="change()">
+        <input type="button" value="." style="color: blue; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="/" style="color: green; width: 30px;" onclick="inputNum(event)">
+        &nbsp;
+        <input type="button" value="tan" style="color: red; width: 35px;" onclick="tri(event)">
+    </body>
+</html>
